@@ -109,7 +109,6 @@ class TestUtility(unittest.TestCase):
         node = TextNode("**bold** and _italic_", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "**", TextType.BOLD)
         new_nodes = split_nodes_delimiter(new_nodes, "_", TextType.ITALIC)
-        print(new_nodes)
         self.assertListEqual(
             [
                 TextNode("bold", TextType.BOLD),
