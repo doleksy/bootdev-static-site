@@ -3,7 +3,7 @@ import unittest
 from leafnode import LeafNode
 
 
-class TestHTMLNode(unittest.TestCase):
+class TestLeafNode(unittest.TestCase):
     def test_none_causes_value_error(self):
         with self.assertRaises(ValueError):
             LeafNode(None, None).to_html()
