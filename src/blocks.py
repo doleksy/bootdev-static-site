@@ -79,5 +79,5 @@ def test_block_to_block_type():
 
 
 if __name__ == "__main__":
-    #test_markdown_to_blocks()
-    test_block_to_block_type()
+    test_markdown_to_blocks()
+    #test_block_to_block_type()
