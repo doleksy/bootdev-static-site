@@ -102,6 +102,13 @@ def quote_to_html_node(block):
     children = text_to_children(content)
     return ParentNode("blockquote", children)
 
+def extract_title(markdown):
+    lines = markdown.split("\n")
+    for line in lines:
+        if line.startswith("# "):
+            return line[2:].strip()
+    raise Exception("No H1 header found")
+
 def test_paragraphs():
     md = """
 This is **bolded** paragraph
@@ -131,6 +138,16 @@ the **same** even with inline stuff
     html = node.to_html()
     print(html)
 # "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>"
+
+def test_title():
+    md = "# This is a title"
+    title = extract_title(md)
+    print(f"TEST title: {title}")
+
+    md = "## This is NOT a title"
+    title = extract_title(md)
+
 if __name__ == "__main__":
     test_paragraphs()
-    #test_codeblock()
+    test_codeblock()
+    test_title()

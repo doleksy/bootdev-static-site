@@ -1,6 +1,6 @@
 import unittest
 
-from markdown import markdown_to_html_node
+from markdown import markdown_to_html_node, extract_title
 
 
 class TestMarkdown(unittest.TestCase):
@@ -101,6 +101,14 @@ the **same** even with inline stuff
             html,
             "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>",
         )
+
+    def test_title_present(self):
+        md = "# This is a title"
+        title = extract_title(md)
+
+    def test_title_not_present(self):
+        md = "## This is NOT a title"
+        self.assertRaises(Exception, extract_title, md)
 
 if __name__ == "__main__":
     unittest.main()
